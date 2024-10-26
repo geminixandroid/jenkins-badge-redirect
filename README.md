@@ -11,7 +11,7 @@ You cant's pass branches with slashes to jenkins, they must be escaped. So this 
 - host - jenkins.domain.com
 - job - pipeline-tests
 - branch - bugfix/task-sample (slash here will be escaped for jenkins plugin)
-- all other query params also will be passed<
+- all other query params also will be passed
 
 ## Example
 [https://jenkins-badge-redirect.geminixandroid.com/icon?host=jenkins.domain.com&job=pipeline-tests&branch=bugfix/task-sample&subject=Some+tests](https://jenkins-badge-redirect.geminixandroid.com/icon?host=jenkins.domain.com&job=pipeline-tests&branch=bugfix/task-sample&subject=Some+tests)
