@@ -1,0 +1,8 @@
+node_modules
+.htaccess
+
+# Log files
+npm-debug.log*
+
+# Editor settings
+.vscode

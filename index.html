@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Redirect to Jenkins Embeddable Build Status badge without slash escapes</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <main>
+    <h1>Redirect for view unprotected <a href="https://plugins.jenkins.io/embeddable-build-status/" target="_blank">Jenkins Build
+        Status</a> for branch names with slashes</h1>
+    <a target="_blank" rel="noopener noreferrer"
+      href="https://github.com/jenkinsci/embeddable-build-status-plugin/blob/master/src/doc/plastic_unconfigured.svg"><img
+        src="https://cdn.jsdelivr.net/gh/jenkinsci/embeddable-build-status-plugin@master/src/doc/plastic_unconfigured.svg"
+        alt="Badge" title="Badge" style="max-width: 100%;"></a>
+    <h2>https://jenkins-badge-redirect.geminixandroid.com/icon?</h2>
+
+    <h3>Use case</h3>
+    <p>
+      You want to automtically show badges in gitlab mr description <a href="https://docs.gitlab.com/ee/user/project/description_templates.html" target="_blank">templates</a> with using environment %{source_branch}, but your braches has slashes.
+      You cant's pass branches with slashes to jenkins, they must be escaped. So this redirect will do it for you.
+    </p>
+    <h3>Query params:</h3>
+    <ul>
+      <li><i>host</i> - jenkins.domain.com </li>
+      <li><i>job</i> - pipeline-tests</i></li>
+      <li><i>branch</i> - bugfix/task-sample (slash here will be escaped for jenkins plugin)</li>
+      <li>all other query params also will be passed</li>
+    </ul>
+    <h3>Example:</h3>
+    <a href="https://jenkins-badge-redirect.geminixandroid.com/icon?host=jenkins.domain.com&job=pipeline-tests&branch=bugfix/task-sample&subject=Some+tests" target="_blank">https://jenkins-badge-redirect.geminixandroid.com/icon?host=jenkins.domain.com&job=pipeline-tests&branch=bugfix/task-sample&subject=Some+tests</a>
+    <br><br>
+    will be redirected to
+    <br><br>
+    https://jenkins.domain.com/buildStatus/icon?job=pipeline-tests%2Fbugfix%252Ftask-sample&subject=Some+tests
+    </p>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "jenkins-badge-redirect",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": {
+    "name": "Alexander Goldobin"
+  },
+  "dependencies": {
+    "express": "^4.21.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}
