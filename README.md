@@ -4,7 +4,10 @@
 You want to automtically show badges in gitlab mr description <a href="https://docs.gitlab.com/ee/user/project/description_templates.html" target="_blank">templates</a> with using environment %{source_branch}, but your braches has slashes.
 You cant's pass branches with slashes to jenkins, they must be escaped. So this redirect will do it for you.
 
-## Url
+## Site
+https://jenkins-badge-redirect.geminixandroid.com
+
+## Redirect path
 [https://jenkins-badge-redirect.geminixandroid.com/icon?](https://jenkins-badge-redirect.geminixandroid.com/icon?)
 
 ## Query params
