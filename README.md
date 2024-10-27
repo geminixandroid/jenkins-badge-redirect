@@ -1,7 +1,7 @@
 # Redirect for view unprotected <a href="https://plugins.jenkins.io/embeddable-build-status/" target="_blank">Jenkins Build Status</a> for branch names with slashes
 
 ## Use case
-You want to automtically show badges in gitlab mr description <a href="https://docs.gitlab.com/ee/user/project/description_templates.html" target="_blank">templates</a> with using environment %{source_branch}, but your braches has slashes.
+You want to automatically show badges in gitlab mr description <a href="https://docs.gitlab.com/ee/user/project/description_templates.html" target="_blank">templates</a> with using environment %{source_branch}, but your braches has slashes.
 You cant's pass branches with slashes to jenkins, they must be escaped. So this redirect will do it for you.
 
 ## Site
