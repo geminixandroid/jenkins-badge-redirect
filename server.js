@@ -19,7 +19,7 @@ app.get('/icon', (req, res) => {
     (key) => !['host', 'job', 'branch'].includes(key)
   )
 
-  if (!host || !job || !branch || req.hostname.includes(host)) {
+  if (!host || !job || !branch || host.includes(req.hostname)) {
     res.writeHead(404)
     res.end()
     return
