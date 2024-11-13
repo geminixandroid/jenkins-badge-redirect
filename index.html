@@ -31,11 +31,11 @@
       <li>all other query params also will be passed</li>
     </ul>
     <h3>Example:</h3>
-    <a href="https://jenkins-badge-redirect.geminixandroid.com/icon?host=jenkins.domain.com&job=pipeline-tests&branch=bugfix/task-sample&subject=Some+tests" target="_blank">https://jenkins-badge-redirect.geminixandroid.com/icon?host=jenkins.domain.com&job=pipeline-tests&branch=bugfix/task-sample&subject=Some+tests</a>
+    <a href="https://jenkins-badge-redirect.geminixandroid.com/icon?host=jenkins.domain.com&job=pipeline-tests&branch=bugfix/task-sample&subject=Some+tests&build=0" target="_blank">https://jenkins-badge-redirect.geminixandroid.com/icon?host=jenkins.domain.com&job=pipeline-tests&branch=bugfix/task-sample&subject=Some+tests&build=0</a>
     <br><br>
     will be redirected to
     <br><br>
-    https://jenkins.domain.com/buildStatus/icon?job=pipeline-tests%2Fbugfix%252Ftask-sample&subject=Some+tests
+    https://jenkins.domain.com/buildStatus/icon?job=pipeline-tests%2Fbugfix%252Ftask-sample&subject=Some+tests&build=0
     </p>
     <h3>Build url:</h3>
     <table style="width: auto;">
@@ -64,7 +64,7 @@
   var subject = document.getElementById('subject');
   var result = document.getElementById('result');
   const handler=()=>{
-    result.href=`https://jenkins-badge-redirect.geminixandroid.com/icon?host=${host.value}&job=${job.value}&branch=${branch.value}${subject.value ? '&subject='+subject.value :''}`
+    result.href=`https://jenkins-badge-redirect.geminixandroid.com/icon?host=${host.value}&job=${job.value}&branch=${branch.value}${subject.value ? '&subject='+subject.value :''}&build=0`
   }
   console.warn(host)
   host.addEventListener('input', handler);
