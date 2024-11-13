@@ -31,9 +31,6 @@ app.get('/icon', (req, res) => {
     redirect.searchParams.append(key, req.query[key])
   })
 
-  if (!redirect.searchParams.has('build'))
-    redirect.searchParams.append('build', 0)
-
   if (!stringIsAValidUrl(redirect)) {
     res.writeHead(404)
     res.end()
