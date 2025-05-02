@@ -10,6 +10,18 @@ function stringIsAValidUrl(url) {
   }
 }
 
+function encodeCyrillic(str) {
+  const temp = str.replace(/[А-Яа-яЁё]/g, function (match) {
+    return 'RU_' + match.charCodeAt(0) + '_'
+  })
+
+  const encoded = encodeURIComponent(temp)
+
+  return encoded.replace(/RU_(\d+)_/g, function (match, code) {
+    return String.fromCharCode(code)
+  })
+}
+
 const app = express()
 app.get('/icon', (req, res) => {
   const host = req.query['host']
@@ -26,7 +38,8 @@ app.get('/icon', (req, res) => {
   }
 
   const redirect = new URL(`https://${host}/buildStatus/icon`)
-  redirect.searchParams.append('job', `${job}/${encodeURIComponent(branch)}`)
+
+  redirect.searchParams.append('job', `${job}/${encodeCyrillic(branch)}`)
   queryKeys.forEach((key) => {
     redirect.searchParams.append(key, req.query[key])
   })
