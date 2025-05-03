@@ -31,6 +31,8 @@ app.get('/icon', (req, res) => {
     return
   }
 
+  res.setHeader("Jenkins-Badge-Redirect-Version","1.0.2");
+
   res.redirect(redirect)
 })
 
