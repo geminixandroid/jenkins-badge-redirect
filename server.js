@@ -1,26 +1,7 @@
 const express = require('express')
 const URL = require('url').URL
-
-function stringIsAValidUrl(url) {
-  try {
-    new URL(url)
-    return true
-  } catch (err) {
-    return false
-  }
-}
-
-function encodeCyrillic(str) {
-  const temp = str.replace(/[А-Яа-яЁё]/g, function (match) {
-    return 'RU_' + match.charCodeAt(0) + '_'
-  })
-
-  const encoded = encodeURIComponent(temp)
-
-  return encoded.replace(/RU_(\d+)_/g, function (match, code) {
-    return String.fromCharCode(code)
-  })
-}
+const stringIsAValidUrl = require('./src/logic/stringIsAValidUrl')
+const encodeCyrillic = require('./src/logic/encodeCyrillic')
 
 const app = express()
 app.get('/icon', (req, res) => {
