@@ -1,6 +1,5 @@
 const express = require('express')
 const URL = require('url').URL
-const stringIsAValidUrl = require('./src/logic/stringIsAValidUrl')
 const encodeCyrillic = require('./src/logic/encodeCyrillic')
 
 const app = express()
@@ -12,32 +11,37 @@ app.get('/icon', (req, res) => {
     (key) => !['host', 'job', 'branch'].includes(key)
   )
 
-  if (!host || !job || !branch || host.includes(req.hostname)) {
+  if (!host || !job || !branch || host === req.hostname) {
     res.writeHead(404)
     res.end()
     return
   }
 
-  const redirect = new URL(`https://${host}/buildStatus/icon`)
+  let redirect
+  try {
+    redirect = new URL(`https://${host}/buildStatus/icon`)
+  } catch {
+    res.writeHead(404)
+    res.end()
+    return
+  }
 
   redirect.searchParams.append('job', `${job}/${encodeCyrillic(branch)}`)
   queryKeys.forEach((key) => {
     redirect.searchParams.append(key, req.query[key])
   })
 
-  if (!stringIsAValidUrl(redirect)) {
-    res.writeHead(404)
-    res.end()
-    return
-  }
-
-  res.setHeader("Jenkins-Badge-Redirect-Version","1.0.2");
+  res.setHeader("Jenkins-Badge-Redirect-Version","1.0.3");
 
   res.redirect(redirect)
 })
 
-const port = 80
+const port = process.env.PORT || 80
 
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`)
-})
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`Server listening on port ${port}`)
+  })
+}
+
+module.exports = app
