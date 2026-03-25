@@ -36,9 +36,15 @@ app.get('/icon', (req, res) => {
   res.redirect(redirect)
 })
 
-const port = process.env.PORT || 80
-
-if (require.main === module) {
+if (process.env.LISTEN) {
+  const lastColon = process.env.LISTEN.lastIndexOf(':')
+  const host = process.env.LISTEN.slice(0, lastColon)
+  const port = parseInt(process.env.LISTEN.slice(lastColon + 1))
+  app.listen(port, host, () => {
+    console.log(`Server listening on ${process.env.LISTEN}`)
+  })
+} else if (require.main === module) {
+  const port = process.env.PORT || 3000
   app.listen(port, () => {
     console.log(`Server listening on port ${port}`)
   })
